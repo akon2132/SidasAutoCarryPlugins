@@ -24,9 +24,9 @@ function PluginOnTick()
 		end
 	end
 
-	if Menu2.LastHit and Menu.LastHit.lhQ then
+	if Menu.LastHit.lhQ and not Menu2.AutoCarry then
 		for _, minion in pairs(AutoCarry.EnemyMinions().objects) do
-			if ValidTarget(minion) and GetDistance(minion) <= SkillQ.range and minion.health <= getDmg("Q", minion, myHero) then
+			if ValidTarget(minion) and GetDistance(minion) <= SkillQ.range and minion.health <= (getDmg("Q", minion, myHero) + myHero.damage) then
 				CastSpell(_Q, minion)
 			end
 		end
@@ -34,7 +34,7 @@ function PluginOnTick()
 
 	if Menu.Killsteal.ksQ then
 		for i, enemy in pairs(AutoCarry.EnemyTable) do
-			if ValidTarget(enemy) and enemy.health <= getDmg("Q", enemy, myHero) and GetDistance(enemy) <= SkillQ.range then
+			if ValidTarget(enemy) and enemy.health <= (getDmg("Q", enemy, myHero) + myHero.damage) and GetDistance(enemy) <= SkillQ.range then
 				CastSpell(_Q, enemy)
 			end
 		end
