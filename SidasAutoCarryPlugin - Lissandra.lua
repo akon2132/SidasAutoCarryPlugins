@@ -38,6 +38,12 @@ function PluginOnTick()
 			end
 		end
 	end
+
+	if Menu2.LaneClear then
+		if Menu.LaneClear.spamQ then
+			LaneClearQ()
+		end
+	end
 end
 
 function mainLoad()
@@ -59,6 +65,10 @@ function mainMenu()
 	Menu:addSubMenu("Harass", "Harass")
 	Menu.Harass:addParam("harQ", "Harass with Q", SCRIPT_PARAM_ONOFF, true)
 
+	--Lane Clear
+	Menu:addSubMenu("Lane Clear", "LaneClear")
+	Menu.LaneClear:addParam("spamQ", "Spam Q on LaneClear", SCRIPT_PARAM_ONOFF, true)
+
 	Menu:addParam("ksR", "Killsteal with Ult", SCRIPT_PARAM_ONOFF, true)
 end
 
@@ -66,5 +76,13 @@ function CastQ(unit)
 	local CastPosition, HitChance, Position = VP:GetLineCastPosition(unit, SkillQ.delay, SkillQ.radius, SkillQ.range, SkillQ.speed, myHero, false)
 	if HitChance > 0 and GetDistance(CastPosition) <= SkillQ.range then
 		CastSpell(_Q, CastPosition.x, CastPosition.z)
+	end
+end
+
+function LaneClearQ()
+	for _, minion in pairs(AutoCarry.EnemyMinions().objects) do
+		if ValidTarget(minion) and GetDistance(minion) <= SkillQ.range and QREADY then
+			CastSpell(_Q, minion.x, minion.z)
+		end
 	end
 end
