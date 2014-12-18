@@ -12,7 +12,7 @@ function PluginOnTick()
 	EREADY = (myHero:CanUseSpell(_E) == READY)
 	RREADY = (myHero:CanUseSpell(_R) == READY)
 
-	if Menu.Harass.harassQ then
+	if Menu.Harass.harassQ and Target then
 		CastSpell(_Q, Target)
 	end
 
