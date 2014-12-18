@@ -27,7 +27,7 @@ function PluginOnTick()
 
 	if Menu.Harass.harQ then
 		if QREADY and Target and GetDistance(Target) <= SkillQ.range and Menu.AutoCarry.useQ then
-			harQ(Target)
+			CastQ(Target)
 		end
 	end
 
@@ -62,20 +62,8 @@ function mainMenu()
 	Menu:addParam("ksR", "Killsteal with Ult", SCRIPT_PARAM_ONOFF, true)
 end
 
-function harQ(unit)
-	local CastPosition, HitChance, Position = VP:GetLineCastPosition(unit, SkillQ.delay, SkillQ.radius, SkillQ.range, SkillQ.speed, myHero, true)
-	if (HitChance == -1) then
-		local NewCastPosition, NewHitChance, Position = VP:GetLineCastPosition(unit, SkillQ.delay, SkillQ.radius, SkillQ.range + 100, SkillQ.speed, myHero, false)
-		if GetDistance(NewCastPosition) <= SkillQ.range then
-			CastSpell(_Q, NewCastPosition.x, NewCastPosition.z)
-		end	
-	elseif HitChance > 0 and GetDistance(CastPosition) <= SkillQ.range then
-		CastSpell(_Q, CastPosition.x, CastPosition.z)
-	end
-end
-
 function CastQ(unit)
-	local CastPosition, HitChance, Position = VP:GetLineCastPosition(unit, SkillQ.delay, SkillQ.radius, SkillQ.range, SkillQ.speed, myHero, true)
+	local CastPosition, HitChance, Position = VP:GetLineCastPosition(unit, SkillQ.delay, SkillQ.radius, SkillQ.range, SkillQ.speed, myHero, false)
 	if HitChance > 0 and GetDistance(CastPosition) <= SkillQ.range then
 		CastSpell(_Q, CastPosition.x, CastPosition.z)
 	end
