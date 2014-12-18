@@ -26,7 +26,7 @@ function PluginOnTick()
 	end
 
 	if Menu.Harass.harQ then
-		if QREADY and Target and GetDistance(Target) <= SkillQ.range and Menu.AutoCarry.useQ then
+		if QREADY and Target and Menu.AutoCarry.useQ then
 			CastQ(Target)
 		end
 	end
