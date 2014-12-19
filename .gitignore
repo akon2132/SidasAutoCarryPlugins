@@ -41,3 +41,36 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+SidasAutoCarryPlugin - Template.lua
+AoESkillshotPosition.lua
+AoE_Skillshot_Position.lua
+AutoBot.lua
+Collision.lua
+comboLib.lua
+DrawDamageLib.lua
+GetMasteries.lua
+iSAC.lua
+JungleLib.lua
+LineSkillShotPosition.lua
+ItemRecipes.lua
+FastCollision.lua
+MapPosition.lua
+DataManager.lua
+CustomPermaShow.lua
+old2dgeo.lua
+MapPosition_walls_1_1.lua
+OnWindUp.lua
+Prodiction.lua
+Saves/lastGame.save
+Saves/scriptConfig.save
+Saves/SidasAutoCarry.save
+SidasAutoCarryPlugin - Nasus.lua
+SidasAutoCarryPlugin - Twitch.lua
+SidasAutoCarryPlugin - Xerath.lua
+SourceLib.lua
+SOW.lua
+spellLib.lua
+VPrediction.lua
+SOWYasi.lua
+ProSeriesLib.lua
